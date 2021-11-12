@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>기프티콘 낚시 사이트</title>
+        <meta charset="utf-8/">
+        <script src="./kakao.js"></script>
+    </head>
+    <body>
+        <script>
+            // 카카오톡 로그인과 카카오톡 이미지 메세지 전송하는 코드
+            Kakao.init('c81f293b202472968c051a774095d817');
+            Kakao.Auth.login({
+                success: function(response) {
+                    Kakao.API.request({
+                        url: '/v1/user/unlink',
+                        success: function(response) {
+                            let nickname = response['properties']['nickname'];
+                        },
+                        fail: function(error) {
+                            console.log(error);
+                        },
+                    });
+                },
+                fail: function(error) {
+                console.log(error);
+                },
+            });
+        </script>
+    </body>
+<html>
